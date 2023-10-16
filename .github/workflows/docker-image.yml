@@ -41,6 +41,8 @@ jobs:
            docker build -t msalvatierradev/docker-graphql:latest .
           
       - name: Push Docker Image
+        env:
+          NEW_VERSION: ${{ steps.version.outputs.version }}
         run: |
           docker push msalvatierradev/docker-graphql:$NEW_VERSION
           docker push msalvatierradev/docker-graphql:latest
